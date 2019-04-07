@@ -2,7 +2,9 @@
 
 "Scripting in Swift" demo for FinMacAdmin meetup 25.04.2019.
 
-Note that scripts are missing all the constraints related things.
+The demo script `CompleteScript.swift` can be used for setting up default email application (macOS Mail or MS Outlook).
+
+_Note that scripts are missing all the constraints related things._
 
 ## Requirements
 
@@ -13,6 +15,22 @@ Note that scripts are missing all the constraints related things.
 Install Xcode or Xcode Command Line Tools.
 
 Install Xcode Command Line Tools by running `swift` in Terminal app.
+
+Clone this repo.
+
+## Usage
+
+Empty window example:
+
+`$ ./EmptyWindow.swift`
+
+GUI example:
+
+`$ ./UIScript.swift`
+
+Choose default email app example:
+
+`$ ./CompleteScript.swift`
 
 ## Wrapper script
 
