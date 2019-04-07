@@ -14,7 +14,7 @@ Add.
 
 ## Wrapper script
 
-`script_wrapper.sh` can be used for running Swift scripts in current user context e.g. with Jamf Pro or Munki.
+`script_wrapper.sh` can be used for running Swift GUI scripts in current user context e.g. with Jamf Pro or Munki. Most of the management tools execute scripts with `root` privileges hence the wrapper script.
 
 Replace `# >>> Add script contents here <<<` with Swift script and test:
 
