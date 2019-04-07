@@ -1,6 +1,6 @@
 # Swift Script GUI App Demo
 
-"Scripting in Swift" demo for FinMacAdmin meetup 25.04.2019
+"Scripting in Swift" demo for FinMacAdmin meetup 25.04.2019.
 
 Note that scripts are missing all the constraints related things.
 
@@ -10,7 +10,9 @@ Note that scripts are missing all the constraints related things.
 
 ## Setup
 
-Add.
+Install Xcode or Xcode Command Line Tools.
+
+Install Xcode Command Line Tools by running `swift` in Terminal app.
 
 ## Wrapper script
 
