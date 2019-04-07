@@ -14,4 +14,8 @@ Add.
 
 ## Wrapper script
 
-Run script using management tool.
+`script_wrapper.sh` can be used for running Swift scripts in current user context e.g. with Jamf Pro or Munki.
+
+Replace `# >>> Add script contents here <<<` with Swift script and test:
+
+`$ sudo path/to/script_wrapper.sh`
