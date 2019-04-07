@@ -24,7 +24,7 @@ Empty window example:
 
 `$ ./EmptyWindow.swift`
 
-GUI example:
+GUI example (button functionality disabled):
 
 `$ ./UIScript.swift`
 
