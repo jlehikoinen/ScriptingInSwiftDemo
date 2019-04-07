@@ -24,7 +24,6 @@ function check_commandline_tools() {
 function here_doc_moulinex() {
 
 /bin/cat <<- 'SCRIPTCONTENTS' > "$temp_script_path"
-#!/usr/bin/swift
 # >>> Add script contents here <<<
 SCRIPTCONTENTS
 }
