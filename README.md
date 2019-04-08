@@ -32,6 +32,40 @@ Choose default email app example:
 
 `$ ./CompleteScript.swift`
 
+## Default email app configuration
+
+https://developer.apple.com/documentation/coreservices/launch_services
+
+MS Outlook Launch Services handlers:
+
+```
+com.apple.mail.email:                   com.microsoft.outlook
+com.microsoft.outlook16.email-message:  com.microsoft.outlook
+public.vcard:                           com.microsoft.outlook
+com.apple.ical.ics:                     com.microsoft.outlook
+com.microsoft.outlook16.icalendar:      com.microsoft.outlook
+```
+
+macOS Mail Launch Services handlers:
+
+```
+com.apple.mail.email:   com.apple.mail
+public.vcard:           com.apple.AddressBook
+com.apple.ical.ics:     com.apple.CalendarFileHandler
+```
+
+macOS Mail URL Scheme:
+
+```
+mailto: com.apple.mail
+```
+
+MS Outlook URL Scheme:
+
+```
+mailto: com.microsoft.outlook
+```
+
 ## Wrapper script
 
 `script_wrapper.sh` can be used for running Swift GUI scripts in current user context e.g. with Jamf Pro or Munki. Most of the management tools execute scripts with `root` privileges hence the wrapper script.
