@@ -2,9 +2,7 @@
 
 "Scripting in Swift" demo for FinMacAdmin meetup 25.04.2019.
 
-The demo script `CompleteScript.swift` can be used for setting up default email application (macOS Mail or MS Outlook).
-
-_Note that scripts are missing all the constraints related things._
+The demo script `CompleteScript.swift` can be used for setting up default email application (macOS Mail or MS Outlook). Use it at your own risk.
 
 ## Requirements
 
@@ -73,3 +71,8 @@ mailto: com.microsoft.outlook
 Replace `# >>> Add script contents here <<<` with Swift script and test:
 
 `$ sudo path/to/script_wrapper.sh`
+
+## Additional information
+
+* Scripts are missing all the constraints related things
+* App quits only using window toolbar red button, `cmd + Q` does not work
