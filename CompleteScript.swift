@@ -62,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var mainWindow: NSWindow?
     let defaultApp = DefaultApp()
-    
+
     func setupUIProperties() {
         
         // Window
@@ -77,7 +77,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = appWindow.contentView!
         
         // Dock icon
-        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ToolbarCustomizeIcon.icns")
+        // makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ToolbarCustomizeIcon.icns")
+        // makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/com.apple.xserve.icns")
+        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/BurningIcon.icns")
         
         // Header
         let mainLabel = makeALabel(title: "Choose default email app", xCoord: 0, yCoord: 300)
@@ -97,15 +99,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         contentView.addSubview(outlookButton)
         outlookButton.action = #selector(outlookButtonClicked)
     }
-    
-    // Helper methods
+
+    // UI helper methods
     func makeADockIcon(path: String) {
         
         let icon = NSImage(byReferencingFile: path)!
         icon.size = CGSize(width: 128, height: 128)
         NSApp.applicationIconImage = icon
     }
-    
+
     func makeAWindow(width: CGFloat, height: CGFloat) -> NSWindow {
         
         let window = NSWindow(contentRect: NSMakeRect(0, 0, width, height),
@@ -121,7 +123,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.titlebarAppearsTransparent = true
         return window
     }
-    
+
     func makeALabel(title: String, xCoord: Int, yCoord: Int) -> NSTextField {
         
         let label = NSTextField(frame: NSRect(x: xCoord, y: yCoord, width: 600, height: 80))
@@ -134,7 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         label.stringValue = title
         return label
     }
-    
+
     func makeAnIcon(appPath: String, xCoord: Int, yCoord: Int) -> NSView {
         
         let appIcon: NSImage = NSWorkspace.shared.icon(forFile: appPath)
@@ -143,7 +145,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         imageView.image = appIcon
         return imageView
     }
-    
+
     func makeAButton(title: String, xCoord: Int, yCoord: Int) -> NSButton {
         
         let button = NSButton(frame: NSRect(x: xCoord, y: yCoord, width: 200, height: 60))
@@ -152,7 +154,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         button.title = title
         return button
     }
-    
+
     // Button actions
     @objc func mailButtonClicked(sender: AnyObject) {
         
@@ -163,7 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defaultApp.setDefaultApp(handler: DefaultApp.utiHandlerApple)
         defaultApp.setDefaultScheme(handler: DefaultApp.urlSchemeApple)
     }
-    
+
     @objc func outlookButtonClicked(sender: AnyObject) {
 
 //        print("Current settings:")
@@ -173,20 +175,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defaultApp.setDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
         defaultApp.setDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
     }
-    
+
     // Required app delegate method
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         setupUIProperties()
     }
-    
-    // Exit when red button is pushed
+
+    // Close app when red button is pushed
     func applicationShouldTerminateAfterLastWindowClosed(_ app: NSApplication) -> Bool {
         return true
     }
 }
 
-// "Create" the app
+// Setup app delegate and run the app
 let thisApp = NSApplication.shared
 NSApp.setActivationPolicy(.regular)
 let appDelegate = AppDelegate()

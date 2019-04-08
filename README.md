@@ -36,6 +36,14 @@ Choose default email app example:
 
 https://developer.apple.com/documentation/coreservices/launch_services
 
+macOS Mail Launch Services handlers:
+
+```
+com.apple.mail.email:   com.apple.mail
+public.vcard:           com.apple.AddressBook
+com.apple.ical.ics:     com.apple.CalendarFileHandler
+```
+
 MS Outlook Launch Services handlers:
 
 ```
@@ -44,14 +52,6 @@ com.microsoft.outlook16.email-message:  com.microsoft.outlook
 public.vcard:                           com.microsoft.outlook
 com.apple.ical.ics:                     com.microsoft.outlook
 com.microsoft.outlook16.icalendar:      com.microsoft.outlook
-```
-
-macOS Mail Launch Services handlers:
-
-```
-com.apple.mail.email:   com.apple.mail
-public.vcard:           com.apple.AddressBook
-com.apple.ical.ics:     com.apple.CalendarFileHandler
 ```
 
 macOS Mail URL Scheme:
