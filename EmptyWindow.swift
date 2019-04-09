@@ -70,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
-// "Create" the app
+// Setup app delegate and run the app
 let thisApp = NSApplication.shared
 NSApp.setActivationPolicy(.regular)
 let appDelegate = AppDelegate()
