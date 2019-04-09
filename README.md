@@ -78,3 +78,4 @@ Replace `# >>> Add script contents here <<<` row in `script_wrapper.sh` script w
 
 * Scripts are missing all the constraints related things
 * Menu bar displays the active app name as "swift"
+* Scripts have been tested on 10.14 & 10.13
