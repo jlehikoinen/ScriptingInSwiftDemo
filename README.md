@@ -68,7 +68,7 @@ mailto: com.microsoft.outlook
 
 ## Wrapper script
 
-`script_wrapper.sh` can be used for running Swift GUI scripts in current user context e.g. with Jamf Pro or Munki. Most of the management tools execute scripts with `root` privileges hence the wrapper script.
+Most of the management tools execute scripts with `root` privileges. If you want to run scripts with management tool in current user context you can use the `script_wrapper.sh` script.
 
 Replace `# >>> Add script contents here <<<` row in `script_wrapper.sh` script with Swift script and test:
 
