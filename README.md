@@ -14,7 +14,7 @@ Install Xcode or Xcode Command Line Tools.
 
 > Tip: Install Xcode Command Line Tools by running `swift` in Terminal app.
 
-Clone this repo.
+Download or `git clone` this repo.
 
 ## Usage
 
