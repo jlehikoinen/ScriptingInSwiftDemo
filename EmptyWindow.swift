@@ -3,13 +3,17 @@
 import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+
     var mainWindow: NSWindow?
+    let appName = "Demo App"
     
     func setupUIProperties() {
         
+        // Menu
+        makeAMenu(appName: appName)
+
         // Window
-        let appWindow = makeAWindow(width: 600, height: 400)
+        let appWindow = makeAWindow(width: 480, height: 270)
         
         // "Normal" window presence (activation & exit)
         appWindow.orderFrontRegardless()
@@ -18,6 +22,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // Helper methods
+    func makeAMenu(appName: String) {
+
+        let mainMenu = NSMenu()
+        let menuItem = mainMenu.addItem(withTitle:"Application", action:nil, keyEquivalent:"")
+        let subMenu = NSMenu()
+        let titleQuit = NSLocalizedString("Quit", comment:"Quit menu item") + " " + appName
+        let menuItemQuit = subMenu.addItem(withTitle: titleQuit, action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        menuItemQuit.target = NSApp
+        mainMenu.setSubmenu(subMenu, for: menuItem)
+        NSApp.mainMenu = mainMenu
+    }
+
     func makeAWindow(width: CGFloat, height: CGFloat) -> NSWindow {
         
         let window = NSWindow(contentRect: NSMakeRect(0, 0, width, height),
@@ -28,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.styleMask.insert(.closable)
         window.styleMask.insert(.miniaturizable)
         window.styleMask.insert(.resizable)
+        window.title = "Window"
         return window
     }
     
@@ -37,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupUIProperties()
     }
     
-    // Exit when red button is pushed
+    // Close app when toolbar red button is pushed
     func applicationShouldTerminateAfterLastWindowClosed(_ app: NSApplication) -> Bool {
         return true
     }

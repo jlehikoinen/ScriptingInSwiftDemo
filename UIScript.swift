@@ -5,9 +5,13 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var mainWindow: NSWindow?
+    let appName = "Demo App"
     
     func setupUIProperties() {
         
+        // Menu
+        makeAMenu(appName: appName)
+
         // Window
         let appWindow = makeAWindow(width: 600, height: 400)
         
@@ -42,6 +46,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // Helper methods
+    func makeAMenu(appName: String) {
+
+        let mainMenu = NSMenu()
+        let menuItem = mainMenu.addItem(withTitle:"Application", action:nil, keyEquivalent:"")
+        let subMenu = NSMenu()
+        let titleQuit = NSLocalizedString("Quit", comment:"Quit menu item") + " " + appName
+        let menuItemQuit = subMenu.addItem(withTitle: titleQuit, action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        menuItemQuit.target = NSApp
+        mainMenu.setSubmenu(subMenu, for: menuItem)
+        NSApp.mainMenu = mainMenu
+    }
+
     func makeADockIcon(path: String) {
         
         let icon = NSImage(byReferencingFile: path)!
@@ -62,6 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.backgroundColor = NSColor.controlBackgroundColor
         window.toolbar?.isVisible = false
         window.titlebarAppearsTransparent = true
+        window.title = appName
         return window
     }
     
@@ -113,7 +130,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupUIProperties()
     }
     
-    // Exit when red button is pushed
+    // Close app when toolbar red button is pushed
     func applicationShouldTerminateAfterLastWindowClosed(_ app: NSApplication) -> Bool {
         return true
     }

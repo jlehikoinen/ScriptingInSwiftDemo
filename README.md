@@ -68,11 +68,11 @@ mailto: com.microsoft.outlook
 
 `script_wrapper.sh` can be used for running Swift GUI scripts in current user context e.g. with Jamf Pro or Munki. Most of the management tools execute scripts with `root` privileges hence the wrapper script.
 
-Replace `# >>> Add script contents here <<<` with Swift script and test:
+Replace `# >>> Add script contents here <<<` row in `script_wrapper.sh` script with Swift script and test:
 
 `$ sudo path/to/script_wrapper.sh`
 
 ## Additional information
 
 * Scripts are missing all the constraints related things
-* App quits only using window toolbar red button, `cmd + Q` does not work
+* Menu bar app name is "swift"
