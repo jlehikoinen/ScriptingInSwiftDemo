@@ -24,7 +24,7 @@ Empty window example:
 
 GUI example (button functionality disabled):
 
-`$ ./UIScript.swift`
+`$ ./OnlyUI.swift`
 
 Choose default email app example:
 
