@@ -19,8 +19,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         appWindow.orderFrontRegardless()
         self.mainWindow = appWindow
         NSApp.activate(ignoringOtherApps: true)
+
+        // Dock icon
+        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
     }
-    
+
     // Helper methods
     func makeAMenu(appName: String) {
 
@@ -32,6 +35,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuItemQuit.target = NSApp
         mainMenu.setSubmenu(subMenu, for: menuItem)
         NSApp.mainMenu = mainMenu
+    }
+
+    func makeADockIcon(path: String) {
+
+        let icon = NSImage(byReferencingFile: path)!
+        icon.size = CGSize(width: 128, height: 128)
+        NSApp.applicationIconImage = icon
     }
 
     func makeAWindow(width: CGFloat, height: CGFloat) -> NSWindow {
