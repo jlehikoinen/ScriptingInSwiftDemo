@@ -12,7 +12,7 @@ The demo script `CompleteScript.swift` can be used for setting up default email 
 
 Install Xcode or Xcode Command Line Tools.
 
-Install Xcode Command Line Tools by running `swift` in Terminal app.
+> Tip: Install Xcode Command Line Tools by running `swift` in Terminal app.
 
 Clone this repo.
 
@@ -77,4 +77,4 @@ Replace `# >>> Add script contents here <<<` row in `script_wrapper.sh` script w
 ## Additional information
 
 * Scripts are missing all the constraints related things
-* Menu bar app name is "swift"
+* Menu bar displays the active app name as "swift"
