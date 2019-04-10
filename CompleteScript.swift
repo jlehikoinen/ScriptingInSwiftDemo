@@ -81,9 +81,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = appWindow.contentView!
         
         // Dock icon
-        // makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ToolbarCustomizeIcon.icns")
-        // makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/com.apple.xserve.icns")
-        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/BurningIcon.icns")
+        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ToolbarCustomizeIcon.icns")
         
         // Header
         let mainLabel = makeALabel(title: "Choose default email app", xCoord: 0, yCoord: 300)
@@ -135,8 +133,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.styleMask.insert(.miniaturizable)
         window.styleMask.insert(.unifiedTitleAndToolbar)
         window.backgroundColor = NSColor.controlBackgroundColor
-        window.toolbar?.isVisible = false
-        window.titlebarAppearsTransparent = true
         window.title = appName
         return window
     }

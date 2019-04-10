@@ -76,8 +76,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.styleMask.insert(.miniaturizable)
         window.styleMask.insert(.unifiedTitleAndToolbar)
         window.backgroundColor = NSColor.controlBackgroundColor
-        window.toolbar?.isVisible = false
-        window.titlebarAppearsTransparent = true
         window.title = appName
         return window
     }
