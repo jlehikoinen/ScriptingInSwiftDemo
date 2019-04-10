@@ -84,8 +84,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let label = NSTextField(frame: NSRect(x: xCoord, y: yCoord, width: 600, height: 80))
         label.isBezeled = false
-        label.drawsBackground = false
-        label.isBordered = false
         label.isEditable = false
         label.font = NSFont.systemFont(ofSize: 40)
         label.alignment = .center
