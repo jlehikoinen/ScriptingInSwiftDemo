@@ -2,7 +2,7 @@
 
 "Scripting in Swift" demo for FinMacAdmin meetup 25.04.2019.
 
-The demo script `CompleteScript.swift` can be used for setting up default email application (macOS Mail or MS Outlook). _Use it at your own risk._
+The demo script `DemoApp.swift` can be used for setting up default email application (macOS Mail or MS Outlook). _Use it at your own risk._
 
 ## Requirements
 
@@ -18,6 +18,14 @@ Download or `git clone` this repo.
 
 ## Usage
 
+Hello Cleveland example:
+
+`$ ./Hello.swift`
+
+Arguments example:
+
+`$ ./Arguments.swift`
+
 Empty window example:
 
 `$ ./EmptyWindow.swift`
@@ -28,11 +36,11 @@ GUI example (button functionality disabled):
 
 Choose default email app example:
 
-`$ ./CompleteScript.swift`
+`$ ./DemoApp.swift`
 
 ## Default email app configuration
 
-`CompleteScript.swift` struct `DefaultApp` uses Launch Services API for changing default email application. See details below.
+`DemoApp.swift` struct `DefaultApp` uses Launch Services API for changing default email application. See details below.
 
 Apple documentation: https://developer.apple.com/documentation/coreservices/launch_services
 
@@ -77,5 +85,5 @@ Replace `# >>> Add script contents here <<<` row in `script_wrapper.sh` script w
 ## Additional information
 
 * Scripts are missing all the constraints related things
-* Menu bar displays the active app name as "swift"
+* Menu bar displays the active app name as "swift" in GUI scripts
 * Scripts have been tested on 10.14 & 10.13
