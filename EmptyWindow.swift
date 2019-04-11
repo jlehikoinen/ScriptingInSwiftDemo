@@ -63,11 +63,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         setupUIProperties()
     }
-    
-    // Close app when toolbar red button is pushed
-    func applicationShouldTerminateAfterLastWindowClosed(_ app: NSApplication) -> Bool {
-        return true
-    }
 }
 
 // Setup app delegate and run the app
