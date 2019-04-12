@@ -1,4 +1,4 @@
-# Swift Script GUI App Demo
+# Scripting in Swift Demo
 
 "Scripting in Swift" demo for FinMacAdmin meetup 25.04.2019.
 
