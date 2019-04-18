@@ -30,6 +30,10 @@ Empty window example:
 
 `$ ./EmptyWindow.swift`
 
+Popup Button demo:
+
+`$ ./PopUpButton.swift`
+
 GUI example (button functionality disabled):
 
 `$ ./OnlyUI.swift`
