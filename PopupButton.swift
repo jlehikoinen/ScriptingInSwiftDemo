@@ -4,70 +4,55 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var mainWindow: NSWindow?
     let appName = "Demo App"
     
-    // Popup button
-    let pop = NSPopUpButton(frame: NSRect(x: 180, y: 100, width: 120, height: 60))
-    // Label
-    let label = NSTextField(frame: NSRect(x: 0, y: 300, width: 600, height: 80))
+    // UI elements
+    let window = NSWindow(contentRect: NSMakeRect(0, 0, 600, 400),
+                          styleMask: .titled,
+                          backing: .buffered,
+                          defer: true)
+    let label = NSTextField(frame: NSRect(x: 0, y: 300, width: 600, height: 60))
+    let popUpButton = NSPopUpButton(frame: NSRect(x: 240, y: 150, width: 120, height: 60))
     
-    //
+    // Methods
     func setupUIProperties() {
         
         // Menu
-        makeAMenu(appName: appName)
+        setupMenu(appName: appName)
+        
+        // Window
+        setupWindow()
         
         // "Normal" window presence (activation & exit)
-        appWindow.orderFrontRegardless()
-        self.mainWindow = appWindow
+        window.orderFrontRegardless()
         NSApp.activate(ignoringOtherApps: true)
 
         // Dock icon
-        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
+        setupDockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
         
         // Setup window's content view
-        let contentView = appWindow.contentView!
+        let contentView = window.contentView!
         
-        // Configure popup button
-        pop.addItem(withTitle: "Option 1")
-        pop.addItem(withTitle: "Option 2")
-        pop.addItem(withTitle: "Option 3")
-        contentView.addSubview(pop)
-        pop.action = #selector(popupButtonClicked)
+        // Popup button
+        setupPopUpButton()
+        contentView.addSubview(popUpButton)
+        popUpButton.action = #selector(popUpButtonClicked)
         
-        // Configure label
-        label.isBezeled = false
-        label.isEditable = false
-        label.font = NSFont.systemFont(ofSize: 40)
-        label.alignment = .center
-    }
-    
-    // Button actions
-    @objc func popupButtonClicked(sender: AnyObject) {
-        
-        let optionSelected = pop.titleOfSelectedItem!
-        print("\(optionSelected) selected")
-        label.stringValue = optionSelected
-        let contentView = appWindow.contentView!
+        // Label
+        setupLabel()
         contentView.addSubview(label)
     }
     
-    // Update label
-    
-    
-    func makeALabel(title: String, xCoord: Int, yCoord: Int) -> NSTextField {
+    // Button actions
+    @objc func popUpButtonClicked(sender: AnyObject) {
         
-        label.isBezeled = false
-        label.isEditable = false
-        label.font = NSFont.systemFont(ofSize: 40)
-        label.alignment = .center
-        label.stringValue = title
-        return label
+        let optionSelected = popUpButton.titleOfSelectedItem!
+        print("\(optionSelected) selected")
+        label.stringValue = optionSelected
     }
-
+    
     // Helper methods
-    func makeAMenu(appName: String) {
+    func setupMenu(appName: String) {
         
         let mainMenu = NSMenu()
         let menuItem = mainMenu.addItem(withTitle: "Application", action: nil, keyEquivalent: "")
@@ -79,25 +64,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.mainMenu = mainMenu
     }
 
-    func makeADockIcon(path: String) {
+    func setupDockIcon(path: String) {
 
         let icon = NSImage(byReferencingFile: path)!
         icon.size = CGSize(width: 128, height: 128)
         NSApp.applicationIconImage = icon
     }
 
-    func makeAWindow(width: CGFloat, height: CGFloat) -> NSWindow {
+    func setupWindow() {
         
-        let window = NSWindow(contentRect: NSMakeRect(0, 0, width, height),
-                              styleMask: .titled,
-                              backing: .buffered,
-                              defer: true)
         window.center()
         window.styleMask.insert(.closable)
         window.styleMask.insert(.miniaturizable)
         window.styleMask.insert(.resizable)
+        window.backgroundColor = NSColor.controlBackgroundColor
         window.title = "Window"
-        return window
+    }
+    
+    func setupLabel() {
+        
+        label.isBezeled = false
+        label.isEditable = false
+        label.font = NSFont.systemFont(ofSize: 40)
+        label.alignment = .center
+    }
+    
+    func setupPopUpButton() {
+        
+        popUpButton.addItem(withTitle: "Earth")
+        popUpButton.addItem(withTitle: "Wind")
+        popUpButton.addItem(withTitle: "Fire")
     }
     
     // Required app delegate method
