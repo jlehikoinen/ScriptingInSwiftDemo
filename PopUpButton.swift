@@ -23,15 +23,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Window
         setupWindow()
         
-        // "Normal" window presence (activation & exit)
-        window.orderFrontRegardless()
-        NSApp.activate(ignoringOtherApps: true)
-
         // Dock icon
         setupDockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
         
+        ///////////////
+        
+        // "Normal" window presence (activation & exit)
+        window.orderFrontRegardless()
+        NSApp.activate(ignoringOtherApps: true)
+        
         // Setup window's content view
         let contentView = window.contentView!
+        
+        ///////////////
         
         // Popup button
         setupPopUpButton()
