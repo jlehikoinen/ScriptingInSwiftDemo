@@ -4,50 +4,64 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var mainWindow: NSWindow?
     let appName = "Demo App"
     
+    // UI elements
+    let window = NSWindow(contentRect: NSMakeRect(0, 0, 600, 400),
+                          styleMask: .titled,
+                          backing: .buffered,
+                          defer: true)
+    let label = NSTextField(frame: NSRect(x: 0, y: 300, width: 600, height: 60))
+    let mailView = NSImageView(frame: NSRect(x: 120, y: 200, width: 80, height: 80))
+    let outlookView = NSImageView(frame: NSRect(x: 120, y: 80, width: 80, height: 80))
+    let mailButton = NSButton(frame: NSRect(x: 280, y: 210, width: 200, height: 60))
+    let outlookButton = NSButton(frame: NSRect(x: 280, y: 90, width: 200, height: 60))
+    
+    // Methods
     func setupUIProperties() {
         
         // Menu
-        makeAMenu(appName: appName)
-
+        setupMenu(appName: appName)
+        
         // Window
-        let appWindow = makeAWindow(width: 600, height: 400)
+        setupWindow()
         
         // "Normal" window presence (activation & exit)
-        appWindow.orderFrontRegardless()
-        self.mainWindow = appWindow
+        window.orderFrontRegardless()
         NSApp.activate(ignoringOtherApps: true)
         
         // Setup window's content view
-        let contentView = appWindow.contentView!
+        let contentView = window.contentView!
         
         // Dock icon
-        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ToolbarCustomizeIcon.icns")
+        setupDockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ToolbarCustomizeIcon.icns")
         
-        // Header
-        let mainLabel = makeALabel(title: "Choose default email app", xCoord: 0, yCoord: 300)
-        contentView.addSubview(mainLabel)
+        ///////////////
         
+        // Label
+        setupLabel(title: "Choose default email app")
+        contentView.addSubview(label)
+
         // Icons
-        let mailView = makeAnIcon(appPath: "/Applications/Mail.app", xCoord: 120, yCoord: 200)
+        setupIcon(appPath: "/Applications/Mail.app", imageView: mailView)
         contentView.addSubview(mailView)
-        let outlookView = makeAnIcon(appPath: "/Applications/Microsoft Outlook.app", xCoord: 120, yCoord: 80)
+        
+        setupIcon(appPath: "/Applications/Microsoft Outlook.app", imageView: outlookView)
         contentView.addSubview(outlookView)
         
         // Buttons
-        let mailButton = makeAButton(title: "macOS Mail", xCoord: 280, yCoord: 210)
+        setupButton(title: "macOS Mail", button: mailButton)
         contentView.addSubview(mailButton)
         mailButton.action = #selector(mailButtonClicked)
-        let outlookButton = makeAButton(title: "Outlook", xCoord: 280, yCoord: 90)
+        
+        setupButton(title: "Outlook", button: outlookButton)
         contentView.addSubview(outlookButton)
         outlookButton.action = #selector(outlookButtonClicked)
     }
     
     // Helper methods
-    func makeAMenu(appName: String) {
-
+    func setupMenu(appName: String) {
+        
         let mainMenu = NSMenu()
         let menuItem = mainMenu.addItem(withTitle: "Application", action: nil, keyEquivalent: "")
         let subMenu = NSMenu()
@@ -57,56 +71,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainMenu.setSubmenu(subMenu, for: menuItem)
         NSApp.mainMenu = mainMenu
     }
-
-    func makeADockIcon(path: String) {
+    
+    func setupWindow() {
+        
+        window.center()
+        window.styleMask.insert(.closable)
+        window.styleMask.insert(.miniaturizable)
+        window.styleMask.insert(.resizable)
+        window.backgroundColor = NSColor.controlBackgroundColor
+        window.title = appName
+    }
+    
+    func setupDockIcon(path: String) {
         
         let icon = NSImage(byReferencingFile: path)!
         icon.size = CGSize(width: 128, height: 128)
         NSApp.applicationIconImage = icon
     }
     
-    func makeAWindow(width: CGFloat, height: CGFloat) -> NSWindow {
+    func setupLabel(title: String) {
         
-        let window = NSWindow(contentRect: NSMakeRect(0, 0, width, height),
-                              styleMask: .titled,
-                              backing: .buffered,
-                              defer: true)
-        window.center()
-        window.styleMask.insert(.closable)
-        window.styleMask.insert(.miniaturizable)
-        window.styleMask.insert(.unifiedTitleAndToolbar)
-        window.backgroundColor = NSColor.controlBackgroundColor
-        window.title = appName
-        return window
-    }
-    
-    func makeALabel(title: String, xCoord: Int, yCoord: Int) -> NSTextField {
-        
-        let label = NSTextField(frame: NSRect(x: xCoord, y: yCoord, width: 600, height: 80))
         label.isBezeled = false
         label.isEditable = false
         label.font = NSFont.systemFont(ofSize: 40)
         label.alignment = .center
         label.stringValue = title
-        return label
     }
     
-    func makeAnIcon(appPath: String, xCoord: Int, yCoord: Int) -> NSView {
+    func setupIcon(appPath: String, imageView: NSImageView) {
         
         let appIcon: NSImage = NSWorkspace.shared.icon(forFile: appPath)
         appIcon.size = NSSize(width: 80.0, height: 80.0)
-        let imageView = NSImageView(frame: NSRect(x: xCoord, y: yCoord, width: 80, height: 80))
         imageView.image = appIcon
-        return imageView
     }
-    
-    func makeAButton(title: String, xCoord: Int, yCoord: Int) -> NSButton {
-        
-        let button = NSButton(frame: NSRect(x: xCoord, y: yCoord, width: 200, height: 60))
+
+    func setupButton(title: String, button: NSButton) {
+
         button.bezelStyle = .regularSquare
         button.font = NSFont.systemFont(ofSize: 20)
         button.title = title
-        return button
     }
     
     // Button actions
