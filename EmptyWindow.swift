@@ -4,28 +4,36 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var mainWindow: NSWindow?
     let appName = "Demo App"
     
+    // UI elements
+    let window = NSWindow(contentRect: NSMakeRect(0, 0, 600, 400),
+                          styleMask: .titled,
+                          backing: .buffered,
+                          defer: true)
+    
+    // Methods
     func setupUIProperties() {
         
         // Menu
-        makeAMenu(appName: appName)
+        setupMenu(appName: appName)
 
         // Window
-        let appWindow = makeAWindow(width: 480, height: 270)
+        setupWindow()
         
         // "Normal" window presence (activation & exit)
-        appWindow.orderFrontRegardless()
-        self.mainWindow = appWindow
+        window.orderFrontRegardless()
         NSApp.activate(ignoringOtherApps: true)
+        
+        // Setup window's content view
+        // let contentView = window.contentView!
 
         // Dock icon
-        makeADockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
+        setupDockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
     }
 
     // Helper methods
-    func makeAMenu(appName: String) {
+    func setupMenu(appName: String) {
         
         let mainMenu = NSMenu()
         let menuItem = mainMenu.addItem(withTitle: "Application", action: nil, keyEquivalent: "")
@@ -36,26 +44,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainMenu.setSubmenu(subMenu, for: menuItem)
         NSApp.mainMenu = mainMenu
     }
-
-    func makeADockIcon(path: String) {
-
-        let icon = NSImage(byReferencingFile: path)!
-        icon.size = CGSize(width: 128, height: 128)
-        NSApp.applicationIconImage = icon
-    }
-
-    func makeAWindow(width: CGFloat, height: CGFloat) -> NSWindow {
+    
+    func setupWindow() {
         
-        let window = NSWindow(contentRect: NSMakeRect(0, 0, width, height),
-                              styleMask: .titled,
-                              backing: .buffered,
-                              defer: true)
         window.center()
         window.styleMask.insert(.closable)
         window.styleMask.insert(.miniaturizable)
         window.styleMask.insert(.resizable)
+        window.backgroundColor = NSColor.controlBackgroundColor
         window.title = "Window"
-        return window
+    }
+    
+    func setupDockIcon(path: String) {
+        
+        let icon = NSImage(byReferencingFile: path)!
+        icon.size = CGSize(width: 128, height: 128)
+        NSApp.applicationIconImage = icon
     }
     
     // Required app delegate method

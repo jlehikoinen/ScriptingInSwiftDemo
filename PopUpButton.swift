@@ -23,17 +23,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Window
         setupWindow()
         
-        // Dock icon
-        setupDockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
-        
-        ///////////////
-        
         // "Normal" window presence (activation & exit)
         window.orderFrontRegardless()
         NSApp.activate(ignoringOtherApps: true)
         
         // Setup window's content view
         let contentView = window.contentView!
+        
+        // Dock icon
+        setupDockIcon(path: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns")
         
         ///////////////
         
@@ -67,14 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainMenu.setSubmenu(subMenu, for: menuItem)
         NSApp.mainMenu = mainMenu
     }
-
-    func setupDockIcon(path: String) {
-
-        let icon = NSImage(byReferencingFile: path)!
-        icon.size = CGSize(width: 128, height: 128)
-        NSApp.applicationIconImage = icon
-    }
-
+    
     func setupWindow() {
         
         window.center()
@@ -83,6 +74,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.styleMask.insert(.resizable)
         window.backgroundColor = NSColor.controlBackgroundColor
         window.title = "Window"
+    }
+
+    func setupDockIcon(path: String) {
+
+        let icon = NSImage(byReferencingFile: path)!
+        icon.size = CGSize(width: 128, height: 128)
+        NSApp.applicationIconImage = icon
     }
     
     func setupLabel() {
