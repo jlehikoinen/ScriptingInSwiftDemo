@@ -48,7 +48,7 @@ Choose default email app example:
 
 ## Default email app configuration
 
-`DemoApp.swift` struct `DefaultApp` uses Launch Services API for changing default email application. See details below.
+`DefaultMailApp.swift` struct `DefaultApp` uses Launch Services API for changing default email application. See details below.
 
 Apple documentation: https://developer.apple.com/documentation/coreservices/launch_services
 
