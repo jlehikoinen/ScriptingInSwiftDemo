@@ -172,20 +172,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Button actions
     @objc func mailButtonClicked(sender: AnyObject) {
         
+        print("macOS Mail selected")
         print("Current settings:")
         defaultApp.getDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
         defaultApp.getDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
-        print("macOS Mail selected")
         defaultApp.setDefaultApp(handler: DefaultApp.utiHandlerApple)
         defaultApp.setDefaultScheme(handler: DefaultApp.urlSchemeApple)
     }
 
     @objc func outlookButtonClicked(sender: AnyObject) {
 
+        print("Outlook selected")
         print("Current settings:")
         defaultApp.getDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
         defaultApp.getDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
-        print("Outlook selected")
         defaultApp.setDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
         defaultApp.setDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
     }
