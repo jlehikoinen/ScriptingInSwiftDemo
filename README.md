@@ -2,7 +2,7 @@
 
 "Scripting in Swift" demo for FinMacAdmin meetup 25.04.2019.
 
-The demo script `DemoApp.swift` can be used for setting up default email application (macOS Mail or MS Outlook). _Use it at your own risk._
+The demo script `DefaultMailApp.swift` can be used for setting up default email application (macOS Mail or MS Outlook). Try `DefaultMailAppOnlyUI.swift` if you only want test the UI.
 
 ## Requirements
 
@@ -41,6 +41,10 @@ GUI example (button functionality disabled):
 Choose default email app example:
 
 `$ ./DefaultMailApp.swift`
+
+## Demo app
+
+![Demo app](DemoApp.png)
 
 ## Default email app configuration
 
