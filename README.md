@@ -36,11 +36,11 @@ Popup button demo:
 
 GUI example (button functionality disabled):
 
-`$ ./DemoAppOnlyUI.swift`
+`$ ./DefaultMailAppOnlyUI.swift`
 
 Choose default email app example:
 
-`$ ./DemoApp.swift`
+`$ ./DefaultMailApp.swift`
 
 ## Default email app configuration
 
