@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let outlookButton = NSButton(frame: NSRect(x: 280, y: 90, width: 200, height: 60))
     
     // Methods
-    func setupUIProperties() {
+    func setupUI() {
         
         // Menu
         setupMenu(appName: appName)
@@ -126,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Required app delegate method
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        setupUIProperties()
+        setupUI()
     }
     
     // Close app when toolbar red button is pushed

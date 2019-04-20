@@ -75,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let outlookButton = NSButton(frame: NSRect(x: 280, y: 90, width: 200, height: 60))
 
     // Methods
-    func setupUIProperties() {
+    func setupUI() {
         
         // Menu
         setupMenu(appName: appName)
@@ -172,9 +172,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Button actions
     @objc func mailButtonClicked(sender: AnyObject) {
         
-//        print("Current settings:")
-//        defaultApp.getDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
-//        defaultApp.getDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
+        print("Current settings:")
+        defaultApp.getDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
+        defaultApp.getDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
         print("macOS Mail selected")
         defaultApp.setDefaultApp(handler: DefaultApp.utiHandlerApple)
         defaultApp.setDefaultScheme(handler: DefaultApp.urlSchemeApple)
@@ -182,9 +182,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func outlookButtonClicked(sender: AnyObject) {
 
-//        print("Current settings:")
-//        defaultApp.getDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
-//        defaultApp.getDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
+        print("Current settings:")
+        defaultApp.getDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
+        defaultApp.getDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
         print("Outlook selected")
         defaultApp.setDefaultApp(handler: DefaultApp.utiHandlerMicrosoft)
         defaultApp.setDefaultScheme(handler: DefaultApp.urlSchemeMicrosoft)
@@ -193,7 +193,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Required app delegate method
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        setupUIProperties()
+        setupUI()
     }
 
     // Close app when toolbar red button is pushed

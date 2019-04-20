@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let popUpButton = NSPopUpButton(frame: NSRect(x: 240, y: 150, width: 120, height: 60))
     
     // Methods
-    func setupUIProperties() {
+    func setupUI() {
         
         // Menu
         setupMenu(appName: appName)
@@ -104,7 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Required app delegate method
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        setupUIProperties()
+        setupUI()
     }
 }
 

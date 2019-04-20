@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                           defer: true)
     
     // Methods
-    func setupUIProperties() {
+    func setupUI() {
         
         // Menu
         setupMenu(appName: appName)
@@ -65,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Required app delegate method
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        setupUIProperties()
+        setupUI()
     }
 }
 
