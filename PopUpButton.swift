@@ -49,6 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func popUpButtonClicked(sender: AnyObject) {
         
         let optionSelected = popUpButton.titleOfSelectedItem!
+        if popUpButton.indexOfSelectedItem == 0 {
+            label.stringValue = ""
+            return
+        }
         print("\(optionSelected) selected")
         label.stringValue = optionSelected
     }
@@ -93,9 +97,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func setupPopUpButton() {
         
-        popUpButton.addItem(withTitle: "Earth")
-        popUpButton.addItem(withTitle: "Wind")
-        popUpButton.addItem(withTitle: "Fire")
+        let options = ["--- Select ---", "Earth", "Wind", "Fire"]
+        let _ = options.map({ popUpButton.addItem(withTitle: $0) })
     }
     
     // Required app delegate method
