@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func setupMenu(appName: String) {
         
         let mainMenu = NSMenu()
-        let menuItem = mainMenu.addItem(withTitle: "Application", action: nil, keyEquivalent: "")
         let subMenu = NSMenu()
+        let menuItem = mainMenu.addItem(withTitle: "Application", action: nil, keyEquivalent: "")
         let titleQuit = NSLocalizedString("Quit", comment: "Quit menu item") + " " + appName
         let menuItemQuit = subMenu.addItem(withTitle: titleQuit, action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         menuItemQuit.target = NSApp

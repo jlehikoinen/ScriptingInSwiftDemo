@@ -2,4 +2,4 @@
 
 import Foundation
 
-print(CommandLine.arguments)
+print(CommandLine.arguments.dropFirst())
