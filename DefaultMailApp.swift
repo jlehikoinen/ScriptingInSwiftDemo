@@ -3,7 +3,7 @@
 import Cocoa
 
 struct DefaultApp {
-
+    
     // Globals
     static let utiHandlerMicrosoft = [
         "com.apple.mail.email": "com.microsoft.outlook",
@@ -27,8 +27,8 @@ struct DefaultApp {
         
         for (contentType, _) in handler {
             if let appHandler = LSCopyDefaultRoleHandlerForContentType(contentType as CFString, LSRolesMask.editor) {
-                let bundleID = Unmanaged.fromOpaque(appHandler.toOpaque()).takeUnretainedValue() as CFString
-                print("\(contentType): \(bundleID)")
+                let bundleId = appHandler.takeRetainedValue()
+                print("\(contentType): \(bundleId)")
             }
         }
     }
@@ -37,8 +37,8 @@ struct DefaultApp {
         
         for (scheme, _) in handler {
             if let appScheme = LSCopyDefaultHandlerForURLScheme(scheme as CFString) {
-                let bundleID = Unmanaged.fromOpaque(appScheme.toOpaque()).takeUnretainedValue() as CFString
-                print("\(scheme): \(bundleID)")
+                let bundleId = appScheme.takeRetainedValue()
+                print("\(scheme): \(bundleId)")
             }
         }
     }
