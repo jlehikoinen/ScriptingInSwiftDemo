@@ -30,7 +30,7 @@ Empty window example:
 
 `$ ./EmptyWindow.swift`
 
-Popup button demo:
+Popup button example:
 
 `$ ./PopUpButton.swift`
 
