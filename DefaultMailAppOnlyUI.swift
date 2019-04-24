@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let outlookView = NSImageView(frame: NSRect(x: 120, y: 80, width: 80, height: 80))
     let mailButton = NSButton(frame: NSRect(x: 280, y: 210, width: 200, height: 60))
     let outlookButton = NSButton(frame: NSRect(x: 280, y: 90, width: 200, height: 60))
+    let mailButtonClickedIcon = NSTextField(frame: NSRect(x: 500, y: 210, width: 40, height: 40))
+    let outlookButtonClickedIcon = NSTextField(frame: NSRect(x: 500, y: 90, width: 40, height: 40))
     
     // Methods
     func setupUI() {
@@ -41,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Label
         setupLabel(title: "Choose default email app")
         contentView.addSubview(label)
-
+        
         // Icons
         setupIcon(appPath: "/Applications/Mail.app", imageView: mailView)
         contentView.addSubview(mailView)
@@ -57,6 +59,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupButton(title: "Outlook", button: outlookButton)
         contentView.addSubview(outlookButton)
         outlookButton.action = #selector(outlookButtonClicked)
+        
+        // Button clicked => OK icons
+        setupHiddenLabel(title: "✅", label: mailButtonClickedIcon)
+        contentView.addSubview(mailButtonClickedIcon)
+        
+        setupHiddenLabel(title: "✅", label: outlookButtonClickedIcon)
+        contentView.addSubview(outlookButtonClickedIcon)
     }
     
     // Helper methods
@@ -103,23 +112,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         appIcon.size = NSSize(width: 80.0, height: 80.0)
         imageView.image = appIcon
     }
-
+    
     func setupButton(title: String, button: NSButton) {
-
+        
         button.bezelStyle = .regularSquare
         button.font = NSFont.systemFont(ofSize: 20)
         button.title = title
     }
     
+    func setupHiddenLabel(title: String, label: NSTextField) {
+        
+        label.isBezeled = false
+        label.isEditable = false
+        label.font = NSFont.systemFont(ofSize: 20)
+        label.alignment = .center
+        label.stringValue = title
+        label.isHidden = true
+    }
+    
     // Button actions
     @objc func mailButtonClicked(sender: AnyObject) {
-
+        
         print("macOS Mail selected")
+        
+        // Handle icon visibility
+        mailButtonClickedIcon.isHidden = false
+        outlookButtonClickedIcon.isHidden = true
     }
     
     @objc func outlookButtonClicked(sender: AnyObject) {
-
+        
         print("Outlook selected")
+        
+        // Handle icon visibility
+        outlookButtonClickedIcon.isHidden = false
+        mailButtonClickedIcon.isHidden = true
     }
     
     // Required app delegate method
