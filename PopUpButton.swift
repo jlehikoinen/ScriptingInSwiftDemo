@@ -75,7 +75,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
         window.styleMask.insert(.closable)
         window.styleMask.insert(.miniaturizable)
-        window.styleMask.insert(.resizable)
         window.backgroundColor = NSColor.controlBackgroundColor
         window.title = "Window"
     }
