@@ -42,7 +42,7 @@ Choose default email app example:
 
 `$ ./DefaultMailApp.swift`
 
-## Demo app
+## Default email app
 
 ![Demo app](DemoApp.png)
 
@@ -89,6 +89,16 @@ Most of the macOS management tools execute scripts with `root` privileges. If yo
 Replace `# >>> Add script contents here <<<` row in `script_wrapper.sh` script with Swift script and test:
 
 `$ sudo path/to/script_wrapper.sh`
+
+### Munki makepkginfo command example
+
+```
+$ makepkginfo --name SwiftScriptTest \
+--displayname "Swift Script Test" \
+--nopkg --pkgvers=1.0 \
+--postinstall_script=script_wrapper.sh \
+--OnDemand > swift_test.pkginfo
+```
 
 ## Additional information
 

@@ -1,8 +1,0 @@
-# Munki makepkginfo command example
-
-makepkginfo --name SwiftScriptTest \
---displayname "Swift Script Test" \
---nopkg --pkgvers=1.0 \
---postinstall_script=script_wrapper.sh \
---OnDemand > swift_test.pkginfo
-
