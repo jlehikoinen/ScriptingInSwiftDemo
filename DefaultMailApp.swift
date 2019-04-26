@@ -73,8 +73,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let outlookView = NSImageView(frame: NSRect(x: 120, y: 80, width: 80, height: 80))
     let mailButton = NSButton(frame: NSRect(x: 280, y: 210, width: 200, height: 60))
     let outlookButton = NSButton(frame: NSRect(x: 280, y: 90, width: 200, height: 60))
-    let mailButtonClickedIcon = NSTextField(frame: NSRect(x: 500, y: 210, width: 40, height: 40))
-    let outlookButtonClickedIcon = NSTextField(frame: NSRect(x: 500, y: 90, width: 40, height: 40))
+    let mailButtonClickedIcon = NSImageView(frame: NSRect(x: 500, y: 220, width: 40, height: 40))
+    let outlookButtonClickedIcon = NSImageView(frame: NSRect(x: 500, y: 100, width: 40, height: 40))
     
     // Methods
     func setupUI() {
@@ -118,11 +118,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         outlookButton.action = #selector(outlookButtonClicked)
         
         // Button clicked => OK icons
-        setupHiddenLabel(title: "✅", label: mailButtonClickedIcon)
+        setupHiddenIcon(path: "/System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Resources/OSBadge.icns", imageView: mailButtonClickedIcon)
         contentView.addSubview(mailButtonClickedIcon)
         
-        setupHiddenLabel(title: "✅", label: outlookButtonClickedIcon)
+        setupHiddenIcon(path: "/System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Resources/OSBadge.icns", imageView: outlookButtonClickedIcon)
         contentView.addSubview(outlookButtonClickedIcon)
+
     }
     
     // Helper methods
@@ -177,14 +178,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         button.title = title
     }
     
-    func setupHiddenLabel(title: String, label: NSTextField) {
+    func setupHiddenIcon(path: String, imageView: NSImageView) {
         
-        label.isBezeled = false
-        label.isEditable = false
-        label.font = NSFont.systemFont(ofSize: 20)
-        label.alignment = .center
-        label.stringValue = title
-        label.isHidden = true
+        let icon: NSImage = NSImage(byReferencingFile: path)!
+        icon.size = NSSize(width: 30.0, height: 30.0)
+        imageView.image = icon
+        imageView.isHidden = true
     }
     
     // Button actions
