@@ -9,15 +9,23 @@ struct ContentView: View {
     @State private var outlookButtonClicked = false
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 30) {
             Text("Choose default email app")
                 .font(.title)
             HStack {
                 Spacer()
-                Image(nsImage: NSWorkspace.shared.icon(forFile: "/System/Applications/Mail.app"))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 80.0, height: 80.0)
+                    .frame(width: 120)
+                ZStack {
+                    Image(nsImage: NSWorkspace.shared.icon(forFile: "/System/Applications/Mail.app"))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80.0, height: 80.0)
+                    if mailButtonClicked {
+                        Text("⭐️")
+                            .font(.title)
+                            .offset(x: 30, y: 30)
+                    }
+                }
                 Spacer()
                 Button(action: {
                     print("macOS Mail selected")
@@ -31,16 +39,21 @@ struct ContentView: View {
                         // .cornerRadius(5)
                 }
                 Spacer()
-                if mailButtonClicked {
-                    Image(nsImage: NSWorkspace.shared.icon(forFile: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/Notifications.icns"))
-                }
             }
             HStack {
                 Spacer()
-                Image(nsImage: NSWorkspace.shared.icon(forFile: "/Applications/Microsoft Outlook.app"))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 80.0, height: 80.0)
+                    .frame(width: 120)
+                ZStack {
+                    Image(nsImage: NSWorkspace.shared.icon(forFile: "/Applications/Microsoft Outlook.app"))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80.0, height: 80.0)
+                    if outlookButtonClicked {
+                        Text("⭐️")
+                            .font(.title)
+                            .offset(x: 30, y: 30)
+                    }
+                }
                 Spacer()
                 Button(action: {
                     print("Outlook selected")
@@ -50,9 +63,6 @@ struct ContentView: View {
                     Text("Outlook")
                 }
                 Spacer()
-                if outlookButtonClicked {
-                    Image(nsImage: NSWorkspace.shared.icon(forFile: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/Notifications.icns"))
-                }
             }
         }
     }
@@ -62,8 +72,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let appName = "Demo App"
     
-    // UI elements
-    let window = NSWindow(contentRect: NSMakeRect(0, 0, 600, 400),
+    // Window
+    let window = NSWindow(contentRect: NSMakeRect(0, 0, 600, .zero),
                           styleMask: .titled,
                           backing: .buffered,
                           defer: true)
