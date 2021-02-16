@@ -33,10 +33,6 @@ struct ContentView: View {
                     outlookButtonClicked = false
                 }) {
                     Text("macOS Mail")
-                        // .frame(width: 200, height: 60)
-                        // .foregroundColor(Color.white)
-                        // .background(Color.gray)
-                        // .cornerRadius(5)
                 }
                 Spacer()
             }

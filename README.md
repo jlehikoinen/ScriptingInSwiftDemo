@@ -42,6 +42,10 @@ Choose default email app example:
 
 `$ ./DefaultMailApp.swift`
 
+SwiftUI example (work in progress):
+
+`$ ./SwiftUI-DefaultMailAppOnlyUI.swift`
+
 ## Default email app
 
 ![Demo app](DemoApp.png)
